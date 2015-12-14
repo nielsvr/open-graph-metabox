@@ -3,11 +3,14 @@
 Plugin Name: Open Graph Metabox
 Plugin URI: http://media-enzo.nl
 Description: This plugin lets you set the Open Graph meta tags per post, page or custom post type
-Version: 1.2.5
+Version: 1.3.1
 Author: Media-Enzo
 Author URI: http://media-enzo.nl
 Author Email: info@media-enzo.nl
 License: GPL2
+
+Text Domain: open-graph-metabox
+Domain Path: /lang/
   
 */
 
@@ -202,7 +205,7 @@ class OpenGraphMetabox {
 							<?php 
 								foreach($this->og_types AS $group => $types) { 
 							
-									echo '<optgroup label="'. __("Most used", 'open-graph-metabox') .'">';
+									echo '<optgroup label="'. $group .'">';
 									
 										if(sizeof($types) > 0 && is_array($types)) {
 											foreach($types AS $type => $label) {
@@ -273,6 +276,16 @@ class OpenGraphMetabox {
 		$open_graph_description = get_post_meta( $post->ID, 'open_graph_description', true );
 		$open_graph_image = get_post_meta( $post->ID, 'open_graph_image', true );
 		$open_graph_type = get_post_meta( $post->ID, 'open_graph_type', true );
+		
+		if( is_front_page() || is_home() ) {
+			
+			$open_graph_title = get_option('_home_open_graph_title');
+			$open_graph_description = get_option('_home_open_graph_description');
+			$open_graph_type = get_option('_home_open_graph_type');
+			$open_graph_image = get_option('_home_open_graph_image');
+			
+		}
+		
 		$facebook_app_id = get_option('_open_graph_app_id');
 		$facebook_admins = get_option('_open_graph_facebook_admins');
 		
@@ -319,6 +332,12 @@ class OpenGraphMetabox {
 		$default_description = get_option('_open_graph_description');
 		$default_type = get_option('_open_graph_type');
 		$default_image = get_option('_open_graph_image');
+	
+		$home_title = get_option('_home_open_graph_title');
+		$home_description = get_option('_home_open_graph_description');
+		$home_type = get_option('_home_open_graph_type');
+		$home_image = get_option('_home_open_graph_image');
+		
 		$facebook_app_id = get_option('_open_graph_app_id'); // fb:app_id tag
 		$facebook_admins = get_option('_open_graph_facebook_admins'); // fb:admins tag
 		
@@ -328,6 +347,12 @@ class OpenGraphMetabox {
 			$default_description = esc_attr($_POST['open_graph_description']);
 			$default_type = esc_attr($_POST['open_graph_type']);
 			$default_image = esc_attr($_POST['open_graph_image']);
+			
+			$home_title = esc_attr($_POST['home_open_graph_title']);
+			$home_description = esc_attr($_POST['home_open_graph_description']);
+			$home_type = esc_attr($_POST['home_open_graph_type']);
+			$home_image = esc_attr($_POST['home_open_graph_image']);
+			
 			$facebook_app_id = esc_attr($_POST['open_graph_app_id']);
 			$facebook_admins = esc_attr($_POST['open_graph_facebook_admins']);
 			
@@ -335,6 +360,12 @@ class OpenGraphMetabox {
 			update_option('_open_graph_description', $default_description);
 			update_option('_open_graph_type', $default_type);
 			update_option('_open_graph_image', $default_image);
+			
+			update_option('_home_open_graph_title', $home_title);
+			update_option('_home_open_graph_description', $home_description);
+			update_option('_home_open_graph_type', $home_type);
+			update_option('_home_open_graph_image', $home_image);
+			
 			update_option('_open_graph_app_id', $facebook_app_id);
 			update_option('_open_graph_facebook_admins', $facebook_admins);
 			 
@@ -348,6 +379,7 @@ class OpenGraphMetabox {
 			<h2><?php _e('Set Open Graph defaults', 'open-graph-metabox'); ?></h2>
 			
 			<form name="form" method="post">
+				<h3><?php _e('Post and page defaults', 'open-graph-metabox'); ?></h3>
 				<p>
 					<?php _e('Complete this form with the Open Graph defaults you wish to set automatically when posting or editing a post.', 'open-graph-metabox'); ?>				
 				</p>
@@ -367,7 +399,7 @@ class OpenGraphMetabox {
 					<tr>
 						<th><label for="open_graph_image"><?php _e('Image', 'open-graph-metabox'); ?></label></th>
 						<td>
-							<input name="open_graph_image" id="open_graph_image_value" type="text" value="<?php echo $open_graph_image; ?>" class="normal-text code" />
+							<input name="open_graph_image" id="open_graph_image_value" type="text" value="<?php echo $default_image; ?>" class="normal-text code" />
 							<input type="button" class="button open_graph_image" id="open_graph_image" value="<?php _e('Select image', 'open-graph-metabox'); ?>">
 						
 						</td>
@@ -380,9 +412,10 @@ class OpenGraphMetabox {
 								<?php 
 									foreach($this->og_types AS $group => $types) { 
 								
-										echo '<optgroup label="'. __("Most used", 'open-graph-metabox') .'">';
+										echo '<optgroup label="'. $group .'">';
 										
 											if(sizeof($types) > 0 && is_array($types)) {
+												
 												foreach($types AS $type => $label) {
 												
 													$selected = ($default_type == $type) ? "selected='selected'" : "";
@@ -415,6 +448,69 @@ class OpenGraphMetabox {
 				<p class="submit">
 					<input type="submit" name="save_defaults" id="submit" class="button button-primary" value="<?php _e('Save settings'); ?>"  />
 				</p> 
+				
+				
+				<h3><?php _e('Front-page defaults', 'open-graph-metabox'); ?></h3>
+				<p>
+					<?php _e('These settings are applied to the frontpage of the website.', 'open-graph-metabox'); ?>				
+				</p>
+	
+				<table class="form-table">
+				
+					<tr>
+						<th><label for="home_open_graph_title"><?php _e('Title', 'open-graph-metabox'); ?></label></th>
+						<td><input name="home_open_graph_title" id="home_open_graph_title" type="text" value="<?php echo $home_title; ?>" class="regular-text" /> (<?php _e("When empty the default title will be used.", 'open-graph-metabox'); ?>)</td>
+					</tr>
+				
+					<tr>
+						<th><label for="home_open_graph_description"><?php _e('Description', 'open-graph-metabox'); ?></label></th>
+						<td><textarea name="home_open_graph_description" id="home_open_graph_description" type="text" class="large-text"><?php echo $home_description; ?></textarea> (<?php _e("When empty the default excerpt will be used.", 'open-graph-metabox'); ?>)</td>
+					</tr>
+			
+					<tr>
+						<th><label for="home_open_graph_image"><?php _e('Image', 'open-graph-metabox'); ?></label></th>
+						<td>
+							<input name="home_open_graph_image" id="home_open_graph_image_value" type="text" value="<?php echo $home_image; ?>" class="normal-text code" />
+							<input type="button" class="button open_graph_image" id="home_open_graph_image" value="<?php _e('Select image', 'open-graph-metabox'); ?>">
+						
+						</td>
+					</tr>
+				
+					<tr>
+						<th><label for="open_graph_type"><?php _e("Type", 'open-graph-metabox'); ?></label></th>
+						<td>
+							<select name="open_graph_type">
+								<?php 
+									foreach($this->og_types AS $group => $types) { 
+								
+										echo '<optgroup label="'. $group .'">';
+										
+											if(sizeof($types) > 0 && is_array($types)) {
+												
+												foreach($types AS $type => $label) {
+												
+													$selected = ($default_type == $type) ? "selected='selected'" : "";
+													
+													echo '<option '.$selected.' value="'.$type.'">'. __($label, 'open-graph-metabox') .'</option>';
+												}
+											}
+										
+										echo '</optgroup>';
+								
+									}
+								?>
+							</select>
+						</td>
+					</tr>
+					
+				</table>
+	
+	
+				<p class="submit">
+					<input type="submit" name="save_defaults" id="submit" class="button button-primary" value="<?php _e('Save settings'); ?>"  />
+				</p> 
+				
+				
 			</form>
 		</div>
 		<?php

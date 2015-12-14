@@ -38,7 +38,12 @@
         }
  
         // Usage
-        $( '#open_graph_image' ).OGImageSelector(); // Use as default option.
+        $( '#open_graph_image' ).OGImageSelector(); 
+        
+        $( '#home_open_graph_image' ).OGImageSelector({
+	        'text': '#home_open_graph_image_value',
+	        'button': '#home_open_graph_image'
+        }); 
         
     } );
 } ( jQuery ) );

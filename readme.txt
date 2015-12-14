@@ -3,8 +3,8 @@ Contributors: nielsvanrenselaar
 Donate link: 
 Tags: open graph, facebook, meta
 Requires at least: 3.0.1
-Tested up to: 3.9.2
-Stable tag: 1.2.5
+Tested up to: 4.4
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +23,15 @@ This plugin lets you set the Open Graph meta tags per post, page or custom post 
 1. The meta box on the edit screen
 
 == Changelog ==
+
+= 1.3.1 =
+* Added support for global translations
+
+= 1.3 =
+* Support WordPress 4.4
+* Fixed issue with wrong labeling at Open Graph Type selection dropdown
+* Fixed issue with not saving the default image
+* Added support for frontpage settings
 
 = 1.2.5 =
 * Minor corrections
