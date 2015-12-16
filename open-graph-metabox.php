@@ -395,7 +395,6 @@ class OpenGraphMetabox {
 		
 		?>
 		<div class="wrap">
-			<div id="icon-options-general" class="icon32"><br /></div>
 			<h2><?php _e('Set Open Graph defaults', 'open-graph-metabox'); ?></h2>
 			
 			<form name="form" method="post">
