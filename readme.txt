@@ -86,6 +86,3 @@ The fb:admins tag is similar to the fb:app_id, but allows you to just specify ea
 
 = 1.0 =
 * First version
-= Why should I set Facebook Admins? =
-
-The fb:admins tag is similar to the fb:app_id, but allows you to just specify each user ID that you would like to give the permission to do the above.
