@@ -3,18 +3,19 @@
 Plugin Name: Open Graph Metabox
 Plugin URI:  https://wordpress.org/plugins/open-graph-metabox/
 Description: This plugin lets you set the Open Graph meta tags per post, page or custom post type.
-Version:     1.3.2
+Version:     1.4
 Author:      Media-Enzo
 Author URI:  http://media-enzo.nl
 Text Domain: open-graph-metabox
 */
 
 
+
 /*
  * Security check
  * Prevent direct access to the file.
  *
- * @since 1.3.2
+ * @since 1.4
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -26,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Open Graph Metabox
  * The main plugin
  *
- * @since 
+ * @since 1.0
  */
 class OpenGraphMetabox {
 
