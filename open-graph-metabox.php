@@ -144,8 +144,8 @@ class OpenGraphMetabox {
 	public function create_menus() {
 
 		add_options_page(
-			__( 'Open Graph settings', 'open-graph-metabox' )
-			__( 'Open Graph settings', 'open-graph-metabox' )
+			__( 'Open Graph settings', 'open-graph-metabox' ),
+			__( 'Open Graph settings', 'open-graph-metabox' ),
 			'manage_options',
 			'open-graph-metabox',
 			array( &$this, 'display_settings_page' )
