@@ -246,6 +246,10 @@ class OpenGraphMetabox {
 	  if ( wp_is_post_autosave( $post_id ) )
 	      return;
 	
+	  // Check if it's not a revision.
+	  if ( wp_is_post_revision( $post_id ) )
+	      return;
+
 	  // verify this came from the our screen and with proper authorization,
 	  // because save_post can be triggered at other times
 	  if ( !wp_verify_nonce( $_POST['open_graph_metabox_noncename'], plugin_basename( __FILE__ ) ) )
