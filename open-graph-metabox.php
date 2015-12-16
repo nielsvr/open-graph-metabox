@@ -19,7 +19,7 @@ Domain Path: /lang/
  * Security check
  * Prevent direct access to the file.
  *
- * @since 1.0
+ * @since 1.3.2
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -27,6 +27,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 
+/*
+ * Open Graph Metabox
+ * The main plugin
+ *
+ * @since 
+ */
 class OpenGraphMetabox {
 
 	private $og_types;
