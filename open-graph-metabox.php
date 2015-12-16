@@ -32,9 +32,7 @@ class OpenGraphMetabox {
 	private $og_types;
 
 	function __construct() {
-	
-		load_plugin_textdomain( 'open-graph-metabox', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
-		
+
 		$this->og_types = array(
 	
 			"Most used" => array(
@@ -103,6 +101,7 @@ class OpenGraphMetabox {
 
 		add_action( 'admin_enqueue_scripts', array( &$this, 'register_admin_scripts') );
 		add_action( 'admin_print_styles', array( &$this, 'register_admin_styles') );
+		add_action( 'plugins_loaded', array( &$this, 'load_textdomain' ) );
 
 		add_action( 'add_meta_boxes', array( &$this, 'create_meta_box') );
 		add_action( 'save_post', array( &$this, 'save_metabox_data') );
@@ -124,6 +123,12 @@ class OpenGraphMetabox {
 		
 			
 	} // end deactivate
+
+	function load_textdomain() {
+
+		load_plugin_textdomain( 'open-graph-metabox' );
+
+	}
 
 
 	public function register_admin_styles() {
