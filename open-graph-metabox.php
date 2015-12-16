@@ -143,9 +143,15 @@ class OpenGraphMetabox {
 	} // end register_admin_scripts
 	
 	public function create_menus() {
-		
-		add_options_page('Open Graph settings', 'Open Graph settings', 'manage_options', 'open-graph-metabox', array( &$this, 'display_settings_page') );
-		
+
+		add_options_page(
+			__( 'Open Graph settings', 'open-graph-metabox' )
+			__( 'Open Graph settings', 'open-graph-metabox' )
+			'manage_options',
+			'open-graph-metabox',
+			array( &$this, 'display_settings_page' )
+		);
+
 	}
 	
 	public function create_meta_box() {
