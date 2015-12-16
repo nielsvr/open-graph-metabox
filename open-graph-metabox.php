@@ -1,17 +1,12 @@
 <?php
 /*
 Plugin Name: Open Graph Metabox
-Plugin URI: http://media-enzo.nl
-Description: This plugin lets you set the Open Graph meta tags per post, page or custom post type
-Version: 1.3.1
-Author: Media-Enzo
-Author URI: http://media-enzo.nl
-Author Email: info@media-enzo.nl
-License: GPL2
-
+Plugin URI:  https://wordpress.org/plugins/open-graph-metabox/
+Description: This plugin lets you set the Open Graph meta tags per post, page or custom post type.
+Version:     1.3.2
+Author:      Media-Enzo
+Author URI:  http://media-enzo.nl
 Text Domain: open-graph-metabox
-Domain Path: /lang/
-  
 */
 
 
