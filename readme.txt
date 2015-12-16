@@ -1,5 +1,5 @@
-Contributors: nielsvanrenselaar
 === Open Graph Metabox ===
+Contributors: nielsvanrenselaar, ramiy
 Tags: open graph, facebook, meta
 Requires at least: 3.0.1
 Tested up to: 4.4
