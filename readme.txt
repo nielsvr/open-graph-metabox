@@ -46,6 +46,18 @@ The fb:admins tag is similar to the fb:app_id, but allows you to just specify ea
 
 == Changelog ==
 
+= 1.4 =
+* Security: Prevent direct access to php files
+* Security: Prevent direct access to directories
+* Fix global translations support
+* Delete unused functions and files
+* Check if it's not an autosave with the wp_is_post_autosave() function
+* Check if it's not a revision with the wp_is_post_revision() function
+* Add missing i18n functions
+* Remove deprecated settings page icon
+* Use the new admin headings hierarchy with H1, H2, H3 tags
+* Update plugin readme file
+
 = 1.3.1 =
 * Added support for global translations
 
