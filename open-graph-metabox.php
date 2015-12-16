@@ -113,16 +113,8 @@ class OpenGraphMetabox {
 	} // end constructor
 
 
-	public function activate( $network_wide ) {
-		
-		
-	} // end activate
 
 
-	public function deactivate( $network_wide ) {
-		
-			
-	} // end deactivate
 
 	function load_textdomain() {
 
