@@ -241,10 +241,9 @@ class OpenGraphMetabox {
 	}
 	
 	function save_metabox_data( $post_id ) {
-	
-	  // verify if this is an auto save routine. 
-	  // If it is our form has not been submitted, so we dont want to do anything
-	  if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
+
+	  // Check if it's not an autosave.
+	  if ( wp_is_post_autosave( $post_id ) )
 	      return;
 	
 	  // verify this came from the our screen and with proper authorization,
