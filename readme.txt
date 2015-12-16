@@ -30,6 +30,15 @@ This plugin lets you set the Open Graph meta tags per post, page or custom post 
 * PHP version 5.6 or greater.
 * MySQL version 5.5 or greater.
 
+== Frequently Asked Questions ==
+
+= Why should I enter my Facebook App ID? =
+
+Including the fb:app_id tag in your HTML HEAD will allow the Facebook scraper to associate the Open Graph entity for that URL with an application. This will allow any admins of that app to view Insights about that URL and any social plugins connected with it. Open Graph Metaboxes let you set this setting trough the settings panel.
+
+= Why should I set Facebook Admins? =
+
+The fb:admins tag is similar to the fb:app_id, but allows you to just specify each user ID that you would like to give the permission to do the above.
 
 == Screenshots ==
 
@@ -77,13 +86,6 @@ This plugin lets you set the Open Graph meta tags per post, page or custom post 
 
 = 1.0 =
 * First version
-
-== Frequently Asked Questions ==
-
-= Why should I enter my Facebook App ID? =
-
-Including the fb:app_id tag in your HTML HEAD will allow the Facebook scraper to associate the Open Graph entity for that URL with an application. This will allow any admins of that app to view Insights about that URL and any social plugins connected with it. Open Graph Metaboxes let you set this setting trough the settings panel.
-
 = Why should I set Facebook Admins? =
 
 The fb:admins tag is similar to the fb:app_id, but allows you to just specify each user ID that you would like to give the permission to do the above.
