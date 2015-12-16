@@ -1,5 +1,4 @@
 Contributors: nielsvanrenselaar
-Donate link: 
 === Open Graph Metabox ===
 Tags: open graph, facebook, meta
 Requires at least: 3.0.1
