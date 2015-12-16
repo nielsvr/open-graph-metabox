@@ -395,14 +395,12 @@ class OpenGraphMetabox {
 		
 		?>
 		<div class="wrap">
-			<h2><?php _e('Set Open Graph defaults', 'open-graph-metabox'); ?></h2>
+			<h1><?php _e('Set Open Graph defaults', 'open-graph-metabox'); ?></h1>
 			
 			<form name="form" method="post">
-				<h3><?php _e('Post and page defaults', 'open-graph-metabox'); ?></h3>
-				<p>
-					<?php _e('Complete this form with the Open Graph defaults you wish to set automatically when posting or editing a post.', 'open-graph-metabox'); ?>				
-				</p>
-	
+				<h2><?php _e('Post and page defaults', 'open-graph-metabox'); ?></h2>
+				<p><?php _e('Complete this form with the Open Graph defaults you wish to set automatically when posting or editing a post.', 'open-graph-metabox'); ?></p>
+
 				<table class="form-table">
 				
 					<tr>
