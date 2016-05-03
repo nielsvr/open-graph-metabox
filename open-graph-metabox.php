@@ -3,7 +3,7 @@
 Plugin Name: Open Graph Metabox
 Plugin URI:  https://wordpress.org/plugins/open-graph-metabox/
 Description: This plugin lets you set the Open Graph meta tags per post, page or custom post type.
-Version:     1.4.2
+Version:     1.4.3
 Author:      Media-Enzo
 Author URI:  http://media-enzo.nl
 Text Domain: open-graph-metabox
@@ -112,12 +112,40 @@ class OpenGraphMetabox {
 
 		add_action( 'admin_menu', array( &$this, 'create_menus' ));
 
+		add_filter( 'plugin_row_meta', array( $this, 'add_plugin_row_meta'), 10, 2 );
+
 	}
 
 
 	function load_textdomain() {
 
 		load_plugin_textdomain( 'open-graph-metabox' );
+
+	}
+
+
+
+	/**
+	 * Add settings page to the plugin screen as a quicklink
+	 *
+	 * @since 1.4.3
+	 * @access private
+	 * @param array $links Current available plugin row links
+	 * @param string $file Current plugin filename being processed.
+	 */
+
+	public function add_plugin_row_meta( $links, $file ) {
+
+		if ( strpos( $file, 'open-graph-metabox.php' ) !== false ) {
+
+			$plugin_links = array(
+					'settings' => '<a href="options-general.php?page=open-graph-metabox">'.__('Settings', 'open-graph-metabox').'</a>',
+			);
+
+			$links = array_merge( $links, $plugin_links );
+		}
+
+		return $links;
 
 	}
 
@@ -223,7 +251,7 @@ class OpenGraphMetabox {
 					<td>
 						<select name="open_graph_type">
 
-							<?php 
+							<?php
 								foreach($this->og_types AS $group => $types) {
 
 									echo '<optgroup label="'. $group .'">';
@@ -266,7 +294,7 @@ class OpenGraphMetabox {
 	      return;
 
 	  // Check permissions
-	  if ( 'page' == $_POST['post_type'] ) 
+	  if ( 'page' == $_POST['post_type'] )
 	  {
 	    if ( !current_user_can( 'edit_page', $post_id ) )
 	        return;
@@ -293,26 +321,26 @@ class OpenGraphMetabox {
 
 
 	function generate_meta_tags() {
-		
+
 		global $post;
-		
+
 
 		if( is_front_page() || is_home() ) {
-			
+
 			$open_graph_title = get_option('_home_open_graph_title');
 			$open_graph_description = get_option('_home_open_graph_description');
 			$open_graph_type = get_option('_home_open_graph_type');
 			$open_graph_image = get_option('_home_open_graph_image');
 			$open_graph_url = site_url();
-			
+
 		} else {
-			
+
 			$open_graph_title = get_post_meta( $post->ID, 'open_graph_title', true );
 			$open_graph_description = get_post_meta( $post->ID, 'open_graph_description', true );
 			$open_graph_image = get_post_meta( $post->ID, 'open_graph_image', true );
 			$open_graph_type = get_post_meta( $post->ID, 'open_graph_type', true );
 			$open_graph_url = get_permalink( $post->ID );
-			
+
 		}
 
 		$facebook_app_id = get_option('_open_graph_app_id');
@@ -406,7 +434,7 @@ class OpenGraphMetabox {
 		?>
 		<div class="wrap">
 			<h1><?php _e('Set Open Graph defaults', 'open-graph-metabox'); ?></h1>
-			
+
 			<form name="form" method="post">
 				<h2><?php _e('Post and page defaults', 'open-graph-metabox'); ?></h2>
 				<p><?php _e('Complete this form with the Open Graph defaults you wish to set automatically when posting or editing a post.', 'open-graph-metabox'); ?></p>
@@ -435,8 +463,8 @@ class OpenGraphMetabox {
 						<th><label for="open_graph_type"><?php _e('Type', 'open-graph-metabox'); ?></label></th>
 						<td>
 							<select name="open_graph_type">
-								<?php 
-									foreach($this->og_types AS $group => $types) { 
+								<?php
+									foreach($this->og_types AS $group => $types) {
 
 										echo '<optgroup label="'. $group .'">';
 
@@ -498,8 +526,8 @@ class OpenGraphMetabox {
 						<th><label for="home_open_graph_type"><?php _e('Type', 'open-graph-metabox'); ?></label></th>
 						<td>
 							<select name="home_open_graph_type">
-								<?php 
-									foreach($this->og_types AS $group => $types) { 
+								<?php
+									foreach($this->og_types AS $group => $types) {
 
 										echo '<optgroup label="'. $group .'">';
 
@@ -529,7 +557,7 @@ class OpenGraphMetabox {
 		<?php
 
 	}
-  
+
 } // end class
 
 new OpenGraphMetabox();

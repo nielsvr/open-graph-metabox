@@ -3,7 +3,7 @@ Contributors: nielsvanrenselaar, ramiy
 Tags: open graph, facebook, meta
 Requires at least: 3.0.1
 Tested up to: 4.5
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,10 +43,14 @@ The fb:admins tag is similar to the fb:app_id, but allows you to just specify ea
 == Screenshots ==
 
 1. The meta box on the edit screen
+2. Individual settings per post/page
 
 == Changelog ==
 
-= 1.4.2 = 
+= 1.4.3 =
+* Added quick link to the options page on the plugin screen
+
+= 1.4.2 =
 * Fixes homepage url issue
 * Fixes error on saving homepage type
 
@@ -78,7 +82,7 @@ The fb:admins tag is similar to the fb:app_id, but allows you to just specify ea
 * Minor corrections
 * Supports WordPress 3.9.2
 
-= 1.2.4 = 
+= 1.2.4 =
 * Supports WordPress 3.8
 
 = 1.2.3 =
